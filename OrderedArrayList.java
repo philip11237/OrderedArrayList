@@ -1,3 +1,4 @@
+import java.lang.IllegalArgumentException;
 public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
   public OrderedArrayList(){
     super();
@@ -9,7 +10,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   public boolean add(T e){
     int i=0;
-    while (i<this.size()&&(this.get(i).compareto(e) < 0)){
+    if (e==null){
+      throw new IllegalArgumentException();
+    }
+    while ((i<this.size())&&(this.get(i).compareTo(e) < 0)){
       i++;
     }
     super.add(i,e);
@@ -20,10 +24,11 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   }
   public T set(int index, T element){
-
+    if (element==null){
+      throw new IllegalArgumentException();
+    }
     T x=this.remove(index);
     add(element);
     return x;
   }
-}
 }
