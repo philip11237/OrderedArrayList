@@ -1,6 +1,6 @@
 public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
   public OrderedArrayList(){
-  super();
+    super();
   }
   public OrderedArrayList(int startingCapacity){
 
@@ -16,12 +16,14 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     return true;
   }
   public void add(int index, T element){
-add(element);
+    add(element);
 
   }
-    public T set(int index, T element){
+  public T set(int index, T element){
 
-    return super.set(index, element);
-    }
+    T x=this.remove(index);
+    add(element);
+    return x;
   }
+}
 }
